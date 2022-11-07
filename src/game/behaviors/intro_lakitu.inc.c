@@ -89,14 +89,12 @@ void bhv_intro_lakitu_loop(void) {
                 gCurrentObject->oAction += 1;
 
             switch (gCurrentObject->oTimer) {
-#if defined(VERSION_US) || defined(VERSION_SH)
                 case 534:
                     cur_obj_play_sound_2(SOUND_ACTION_FLYING_FAST);
                     break;
                 case 581:
                     cur_obj_play_sound_2(SOUND_ACTION_INTRO_UNK45E);
                     break;
-#endif
                 case 73:
                     gCurrentObject->oAnimState += 1;
                     break;
@@ -110,19 +108,9 @@ void bhv_intro_lakitu_loop(void) {
                     gCurrentObject->oAnimState -= 1;
                     break;
             }
-#ifdef VERSION_EU
-            if (gCurrentObject->oTimer == 446)
-                cur_obj_play_sound_2(SOUND_ACTION_FLYING_FAST);
-            if (gCurrentObject->oTimer == 485)
-                cur_obj_play_sound_2(SOUND_ACTION_INTRO_UNK45E);
-#endif
             break;
         case 2:
-#ifdef VERSION_EU
-            if (gCutsceneTimer > 599) {
-#else
             if (gCutsceneTimer > 720) {
-#endif
                 gCurrentObject->oAction += 1;
                 gCurrentObject->oIntroLakituUnk100 = 1400.f;
                 gCurrentObject->oIntroLakituUnk104 = -4096.f;
@@ -161,20 +149,14 @@ void bhv_intro_lakitu_loop(void) {
                 spawn_mist_from_global();
                 gCurrentObject->oPosY += 158.f;
             }
-#ifdef VERSION_EU
-#define TIMER 74
-#else
 #define TIMER 98
-#endif
 
             if (gCurrentObject->oTimer == TIMER) {
                 obj_mark_for_deletion(gCurrentObject);
                 obj_mark_for_deletion(gCurrentObject->oIntroLakituCloud);
             }
-#ifndef VERSION_JP
             if (gCurrentObject->oTimer == 14)
                 cur_obj_play_sound_2(SOUND_ACTION_INTRO_UNK45F);
-#endif
             break;
         case 100:
             cur_obj_enable_rendering();

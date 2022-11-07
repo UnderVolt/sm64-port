@@ -243,11 +243,7 @@ static void geo_process_perspective(struct GraphNodePerspective *node) {
         u16 perspNorm;
         Mtx *mtx = alloc_display_list(sizeof(*mtx));
 
-#ifdef VERSION_EU
-        f32 aspect = ((f32) gCurGraphNodeRoot->width / (f32) gCurGraphNodeRoot->height) * 1.1f;
-#else
         f32 aspect = (f32) gCurGraphNodeRoot->width / (f32) gCurGraphNodeRoot->height;
-#endif
 
         guPerspective(mtx, &perspNorm, node->fov, aspect, node->near, node->far, 1.0f);
         gSPPerspNormalize(gDisplayListHead++, perspNorm);
@@ -277,10 +273,8 @@ static void geo_process_level_of_detail(struct GraphNodeLevelOfDetail *node) {
     s16 distanceFromCam = -GET_HIGH_S16_OF_32(mtx->m[1][3]); // z-component of the translation column
 #endif
 
-#ifndef TARGET_N64
     // We assume modern hardware is powerful enough to draw the most detailed variant
     distanceFromCam = 0;
-#endif
 
     if (node->minDistance <= distanceFromCam && distanceFromCam < node->maxDistance) {
         if (node->node.children != 0) {

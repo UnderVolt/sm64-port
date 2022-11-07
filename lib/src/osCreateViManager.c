@@ -46,9 +46,6 @@ void osCreateViManager(OSPri pri) {
         viMgrMainArgs.eventQueue = &__osViMesgQueue;
         viMgrMainArgs.accessQueue = NULL;
         viMgrMainArgs.dma_func = NULL;
-#if defined(VERSION_EU) || defined(VERSION_SH)
-        viMgrMainArgs.edma_func = NULL;
-#endif
 
         osCreateThread(&viMgrThread, 0, viMgrMain, (void *) &viMgrMainArgs, &viMgrStack[0x400], pri);
         __osViInit();

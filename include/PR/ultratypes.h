@@ -18,21 +18,11 @@ typedef unsigned int           u32;
 typedef float  f32;
 typedef double f64;
 
-#ifdef TARGET_N64
-typedef signed long long int   s64;
-typedef unsigned long long int u64;
-typedef u32 size_t;
-typedef s32 ssize_t;
-typedef u32 uintptr_t;
-typedef s32 intptr_t;
-typedef s32 ptrdiff_t;
-#else
 #include <stddef.h>
 #include <stdint.h>
 typedef ptrdiff_t ssize_t;
 typedef int64_t s64;
 typedef uint64_t u64;
-#endif
 
 typedef volatile u8   vu8;
 typedef volatile u16 vu16;

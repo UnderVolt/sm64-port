@@ -28,11 +28,9 @@ s32 osAiSetFrequency(u32 freq) {
     return osViClock / (s32) a1;
 }
 
-#ifndef VERSION_SH
 // put some extra jr $ra's down there please
 UNUSED static void filler1(void) {
 }
 
 UNUSED static void filler2(void) {
 }
-#endif

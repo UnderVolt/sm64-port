@@ -70,13 +70,8 @@ void exec_display_list(struct SPTask *spTask) {
 
 #define printf
 
-#ifdef VERSION_EU
-#define SAMPLES_HIGH 656
-#define SAMPLES_LOW 640
-#else
 #define SAMPLES_HIGH 544
 #define SAMPLES_LOW 528
-#endif
 
 void produce_one_frame(void) {
     gfx_start_frame();

@@ -32,13 +32,8 @@
 #define WINCLASS_NAME L"N64GAME"
 #define GFX_API_NAME "DirectX"
 
-#ifdef VERSION_EU
-#define FRAME_INTERVAL_US_NUMERATOR 40000
-#define FRAME_INTERVAL_US_DENOMINATOR 1
-#else
 #define FRAME_INTERVAL_US_NUMERATOR 100000
 #define FRAME_INTERVAL_US_DENOMINATOR 3
-#endif
 
 using namespace Microsoft::WRL; // For ComPtr
 

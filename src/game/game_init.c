@@ -111,9 +111,6 @@ void init_rdp(void) {
     gDPSetColorDither(gDisplayListHead++, G_CD_MAGICSQ);
     gDPSetCycleType(gDisplayListHead++, G_CYC_FILL);
 
-#ifdef VERSION_SH
-    gDPSetAlphaDither(gDisplayListHead++, G_AD_PATTERN);
-#endif
     gDPPipeSync(gDisplayListHead++);
 }
 
@@ -257,13 +254,6 @@ void create_gfx_task_structure(void) {
     gGfxSPTask->msgqueue = &gGfxVblankQueue;
     gGfxSPTask->msg = (OSMesg) 2;
     gGfxSPTask->task.t.type = M_GFXTASK;
-#ifdef TARGET_N64
-    gGfxSPTask->task.t.ucode_boot = rspF3DBootStart;
-    gGfxSPTask->task.t.ucode_boot_size = ((u8 *) rspF3DBootEnd - (u8 *) rspF3DBootStart);
-    gGfxSPTask->task.t.flags = 0;
-    gGfxSPTask->task.t.ucode = rspF3DStart;
-    gGfxSPTask->task.t.ucode_data = rspF3DDataStart;
-#endif
     gGfxSPTask->task.t.ucode_size = SP_UCODE_SIZE; // (this size is ignored)
     gGfxSPTask->task.t.ucode_data_size = SP_UCODE_DATA_SIZE;
     gGfxSPTask->task.t.dram_stack = (u64 *) gGfxSPTaskStack;
@@ -333,25 +323,6 @@ void draw_reset_bars(void) {
     osRecvMesg(&gGameVblankQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
 }
 
-#ifdef TARGET_N64
-/**
- * Initial settings for the first rendered frame.
- */
-void render_init(void) {
-    gGfxPool = &gGfxPools[0];
-    set_segment_base_addr(1, gGfxPool->buffer);
-    gGfxSPTask = &gGfxPool->spTask;
-    gDisplayListHead = gGfxPool->buffer;
-    gGfxPoolEnd = (u8 *)(gGfxPool->buffer + GFX_POOL_SIZE);
-    init_rcp();
-    clear_frame_buffer(0);
-    end_master_display_list();
-    exec_display_list(&gGfxPool->spTask);
-
-    sRenderingFrameBuffer++;
-    gGlobalTimer++;
-}
-#endif
 
 #ifdef USE_SYSTEM_MALLOC
 Gfx **alloc_next_dl(void) {
@@ -666,17 +637,12 @@ void setup_game_memory(void) {
     load_segment_decompress(2, _segment2_mio0SegmentRomStart, _segment2_mio0SegmentRomEnd);
 }
 
-#ifndef TARGET_N64
 static struct LevelCommand *levelCommandAddr;
-#endif
 
 /**
  * Main game loop thread. Runs forever as long as the game continues.
  */
 void thread5_game_loop(UNUSED void *arg) {
-#ifdef TARGET_N64
-    struct LevelCommand *levelCommandAddr;
-#endif
 
     setup_game_memory();
 #if ENABLE_RUMBLE
@@ -696,24 +662,14 @@ void thread5_game_loop(UNUSED void *arg) {
     play_music(SEQ_PLAYER_SFX, SEQUENCE_ARGS(0, SEQ_SOUND_PLAYER), 0);
     set_sound_mode(save_file_get_sound_mode());
 
-#ifdef TARGET_N64
-    render_init();
-
-    while (TRUE) {
-#else
     gGlobalTimer++;
 }
 
 void game_loop_one_iteration(void) {
-#endif
         // If the reset timer is active, run the process to reset the game.
         if (gResetTimer) {
             draw_reset_bars();
-#ifdef TARGET_N64
-            continue;
-#else
             return;
-#endif
         }
         profiler_log_thread5_time(THREAD5_START);
 
@@ -741,7 +697,4 @@ void game_loop_one_iteration(void) {
             print_text_fmt_int(180, 20, "BUF %d", gGfxPoolEnd - (u8 *) gDisplayListHead);
 #endif
         }
-#ifdef TARGET_N64
-    }
-#endif
 }

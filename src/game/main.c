@@ -141,9 +141,6 @@ void create_thread(OSThread *thread, OSId id, void (*entry)(void *), void *arg, 
     osCreateThread(thread, id, entry, arg, sp, pri);
 }
 
-#ifdef VERSION_SH
-extern void func_sh_802f69cc(void);
-#endif
 
 void handle_nmi_request(void) {
     gResetTimer = 1;
@@ -151,9 +148,6 @@ void handle_nmi_request(void) {
     stop_sounds_in_continuous_banks();
     sound_banks_disable(SEQ_PLAYER_SFX, SOUND_BANKS_BACKGROUND);
     fadeout_music(90);
-#ifdef VERSION_SH
-    func_sh_802f69cc();
-#endif
 }
 
 void receive_new_tasks(void) {
@@ -222,15 +216,9 @@ void handle_vblank(void) {
 
     stub_main_3();
     gNumVblanks++;
-#ifdef VERSION_SH
-    if (gResetTimer > 0 && gResetTimer < 100) {
-        gResetTimer++;
-    }
-#else
     if (gResetTimer > 0) {
         gResetTimer++;
     }
-#endif
 
     receive_new_tasks();
 
@@ -419,22 +407,14 @@ void turn_off_audio(void) {
  * Initialize hardware, start main thread, then idle.
  */
 void thread1_idle(UNUSED void *arg) {
-#if defined(VERSION_US) || defined(VERSION_SH)
     s32 sp24 = osTvType;
-#endif
 
     osCreateViManager(OS_PRIORITY_VIMGR);
-#if defined(VERSION_US) || defined(VERSION_SH)
     if (sp24 == TV_TYPE_NTSC) {
         osViSetMode(&osViModeTable[OS_VI_NTSC_LAN1]);
     } else {
         osViSetMode(&osViModeTable[OS_VI_PAL_LAN1]);
     }
-#elif defined(VERSION_JP)
-    osViSetMode(&osViModeTable[OS_VI_NTSC_LAN1]);
-#else // VERSION_EU
-    osViSetMode(&osViModeTable[OS_VI_PAL_LAN1]);
-#endif
     osViBlack(TRUE);
     osViSetSpecialFeatures(OS_VI_DITHER_FILTER_ON);
     osViSetSpecialFeatures(OS_VI_GAMMA_OFF);

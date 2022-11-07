@@ -80,11 +80,6 @@ void piranha_plant_act_sleeping(void) {
      * Make Piranha Plants harmless, but tangible, while they sleep.
      */
     o->oDamageOrCoinValue = 0;
-#elif defined(VERSION_EU)
-    /**
-     * Make Piranha Plants harmful when sleeping - but do it explicitly.
-     */
-    o->oDamageOrCoinValue = 3;
 #endif
 
     if (o->oDistanceToMario < 400.0f) {
@@ -106,7 +101,7 @@ void piranha_plant_act_sleeping(void) {
  * to the biting state.
  */
 void piranha_plant_act_woken_up(void) {
-#if BUGFIX_PIRANHA_PLANT_SLEEP_DAMAGE || defined(VERSION_EU)
+#if BUGFIX_PIRANHA_PLANT_SLEEP_DAMAGE
     /**
      * Make Piranha Plants damage the player while awake. This call is only
      * necessary in the US version because it is set to 3 by default and is

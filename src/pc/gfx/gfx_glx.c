@@ -19,13 +19,8 @@
 
 #define GFX_API_NAME "GLX - OpenGL"
 
-#ifdef VERSION_EU
-#define FRAME_INTERVAL_US_NUMERATOR 40000
-#define FRAME_INTERVAL_US_DENOMINATOR 1
-#else
 #define FRAME_INTERVAL_US_NUMERATOR 100000
 #define FRAME_INTERVAL_US_DENOMINATOR 3
-#endif
 
 const struct {
     const char *name;

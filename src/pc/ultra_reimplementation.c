@@ -32,28 +32,9 @@ s32 osJamMesg(UNUSED OSMesgQueue *mq, UNUSED OSMesg msg, UNUSED s32 flag) {
     return 0;
 }
 s32 osSendMesg(UNUSED OSMesgQueue *mq, UNUSED OSMesg msg, UNUSED s32 flag) {
-#if defined(VERSION_EU) || defined(VERSION_SH)
-    s32 index;
-    if (mq->validCount >= mq->msgCount) {
-        return -1;
-    }
-    index = (mq->first + mq->validCount) % mq->msgCount;
-    mq->msg[index] = msg;
-    mq->validCount++;
-#endif
     return 0;
 }
 s32 osRecvMesg(UNUSED OSMesgQueue *mq, UNUSED OSMesg *msg, UNUSED s32 flag) {
-#if defined(VERSION_EU) || defined(VERSION_SH)
-    if (mq->validCount == 0) {
-        return -1;
-    }
-    if (msg != NULL) {
-        *msg = *(mq->first + mq->msg);
-    }
-    mq->first = (mq->first + 1) % mq->msgCount;
-    mq->validCount--;
-#endif
     return 0;
 }
 
@@ -97,11 +78,7 @@ s32 osAiSetFrequency(u32 freq) {
     s32 a2;
     u32 D_8033491C;
 
-#ifdef VERSION_EU
-    D_8033491C = 0x02E6025C;
-#else
     D_8033491C = 0x02E6D354;
-#endif
 
     a1 = D_8033491C / (float) freq + .5f;
 

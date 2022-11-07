@@ -2,9 +2,7 @@
 #include <stdarg.h>
 #include <stdio.h>
 
-#if defined(VERSION_JP) || defined(VERSION_US)
 #include "prevent_bss_reordering.h"
-#endif
 
 #include "debug_utils.h"
 #include "draw_objects.h"
@@ -88,24 +86,6 @@ struct DynListBankInfo {
 };
 
 // bss
-#if defined(VERSION_EU) || defined(VERSION_SH)
-static OSMesgQueue D_801BE830; // controller msg queue
-static OSMesg D_801BE848[10];
-u8 EUpad1[0x40];
-static OSMesgQueue D_801BE8B0;
-static OSMesgQueue sGdDMAQueue; // @ 801BE8C8
-// static u32 unref_801be870[16];
-// static u32 unref_801be8e0[25];
-// static u32 unref_801be948[13];
-u8 EUpad2[0x64];
-static OSMesg sGdMesgBuf[1]; // @ 801BE944
-u8 EUpad3[0x34];
-static OSMesg sGdDMACompleteMsg; // msg buf for D_801BE8B0 queue
-static OSIoMesg sGdDMAReqMesg;
-static struct ObjView *D_801BE994; // store if View flag 0x40 set
-
-u8 EUpad4[0x88];
-#endif
 static OSContStatus D_801BAE60[4];
 static OSContPad sGdContPads[4];    // @ 801BAE70
 static OSContPad sPrevFrameCont[4]; // @ 801BAE88
@@ -169,7 +149,6 @@ static s32 sPickBufPosition;                         // @ 801BE784
 static s16 *sPickBuf;                                // @ 801BE788
 static LookAt D_801BE790[2];
 static LookAt D_801BE7D0[3];
-#if defined(VERSION_JP) || defined(VERSION_US)
 static OSMesgQueue D_801BE830; // controller msg queue
 static OSMesg D_801BE848[10];
 UNUSED static u32 unref_801be870[16];
@@ -181,7 +160,6 @@ UNUSED static u32 unref_801be948[13];
 static OSMesg sGdDMACompleteMsg; // msg buf for D_801BE8B0 queue
 static OSIoMesg sGdDMAReqMesg;
 static struct ObjView *D_801BE994; // store if View flag 0x40 set
-#endif
 
 #ifdef USE_SYSTEM_MALLOC
 static void *(*sAllocFn)(u32 size);
@@ -2418,9 +2396,6 @@ void start_view_dl(struct ObjView *view) {
         uly = lry - 1.0f;
     }
 
-#ifdef TARGET_N64
-    gDPSetScissor(next_gfx(), G_SC_NON_INTERLACE, ulx, uly, lrx, lry);
-#endif
     gSPClearGeometryMode(next_gfx(), 0xFFFFFFFF);
     gSPSetGeometryMode(next_gfx(), G_LIGHTING | G_CULL_BACK | G_SHADING_SMOOTH | G_SHADE);
     if (view->flags & VIEW_ALLOC_ZBUF) {

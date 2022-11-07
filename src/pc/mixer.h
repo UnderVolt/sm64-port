@@ -5,9 +5,6 @@
 #include <stdint.h>
 #include <ultra64.h>
 
-#ifdef VERSION_SH
-#define NEW_AUDIO_UCODE
-#endif
 
 #undef aSegment
 #undef aClearBuffer

@@ -22,19 +22,13 @@
 
 #define SEG_BUFFERS      0x801C1000
 
-#if defined(VERSION_SH) || ENABLE_RUMBLE
+#if ENABLE_RUMBLE
 #define SEG_MAIN         0x80249000
-#elif defined(VERSION_EU)
-#define SEG_MAIN         0x80241800 // TODO: Investigate why it's different?
 #else
 #define SEG_MAIN         0x80246000
 #endif
 
-#ifdef VERSION_EU
-#define SEG_ENGINE       0x8036FF00
-#else
 #define SEG_ENGINE       0x80378800
-#endif
 
 #define SEG_FRAMEBUFFERS 0x8038F800
 

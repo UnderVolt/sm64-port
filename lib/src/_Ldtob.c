@@ -34,15 +34,9 @@ const double D_80338670[] = { 10e0L, 10e1L, 10e3L, 10e7L, 10e15L, 10e31L, 10e63L
 #define _DMAX ((1 << (15 - _DOFF)) - 1)
 #define _DNAN (0x8000 | _DMAX << _DOFF | 1 << (_DOFF - 1))
 #define _DSIGN 0x8000
-#if _D0 == 3
-#define _D1 2 /* little-endian order */
-#define _D2 1
-#define _D3 0
-#else
 #define _D1 1 /* big-endian order */
 #define _D2 2
 #define _D3 3
-#endif
 
 void _Ldtob(printf_struct *args, u8 type) {
     u8 buff[BUFF_LEN];
