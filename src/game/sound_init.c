@@ -171,11 +171,9 @@ void play_menu_sounds(s16 soundMenuFlags) {
     if (soundMenuFlags & 0x100) {
         play_menu_sounds_extra(20, NULL);
     }
-#if ENABLE_RUMBLE
     if (soundMenuFlags & SOUND_MENU_FLAG_LETGOMARIOFACE) {
         queue_rumble_data(10, 60);
     }
-#endif
 }
 
 /**
@@ -349,7 +347,7 @@ void thread4_sound(UNUSED void *arg) {
         if (gResetTimer < 25) {
             struct SPTask *spTask;
             profiler_log_thread4_time();
-            spTask = create_next_audio_frame_task(); 
+            spTask = create_next_audio_frame_task();
             if (spTask != NULL) {
                 dispatch_audio_sptask(spTask);
             }

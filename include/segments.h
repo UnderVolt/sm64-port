@@ -22,11 +22,7 @@
 
 #define SEG_BUFFERS      0x801C1000
 
-#if ENABLE_RUMBLE
 #define SEG_MAIN         0x80249000
-#else
-#define SEG_MAIN         0x80246000
-#endif
 
 #define SEG_ENGINE       0x80378800
 

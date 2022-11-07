@@ -32,7 +32,7 @@
 #define BUGFIX_BOWSER_FADING_OUT (0 || VERSION_US || VERSION_EU || VERSION_SH)
 
 // Support Rumble Pak
-#define ENABLE_RUMBLE (0 || VERSION_SH)
+// error : inserted by coan: "#define ENABLE_RUMBLE (0 || VERSION_SH)" differently redefines -D symbol at I:\dot\sm64-port\include\config.h(35)
 
 // Screen Size Defines
 #define SCREEN_WIDTH 320

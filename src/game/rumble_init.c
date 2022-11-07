@@ -6,7 +6,6 @@
 #include "rumble_init.h"
 #include "config.h"
 
-#if ENABLE_RUMBLE
 
 OSThread gRumblePakThread;
 
@@ -268,4 +267,3 @@ void rumble_thread_update_vi(void) {
     osSendMesg(&gRumbleThreadVIMesgQueue, (OSMesg) 0x56525443, OS_MESG_NOBLOCK);
 }
 
-#endif

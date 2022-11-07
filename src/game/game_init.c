@@ -525,9 +525,7 @@ void read_controller_inputs(void) {
     if (gControllerBits) {
         osRecvMesg(&gSIEventMesgQueue, &gMainReceivedMesg, OS_MESG_BLOCK);
         osContGetReadData(&gControllerPads[0]);
-#if ENABLE_RUMBLE
         release_rumble_pak_control();
-#endif
     }
     run_demo_inputs();
 
@@ -595,9 +593,7 @@ void init_controllers(void) {
             // into any port in order to play the game. this was probably
             // so if any of the ports didn't work, you can have controllers
             // plugged into any of them and it will work.
-#if ENABLE_RUMBLE
             gControllers[cont].port = port;
-#endif
             gControllers[cont].statusData = &gControllerStatuses[port];
             gControllers[cont++].controllerData = &gControllerPads[port];
         }
@@ -645,13 +641,9 @@ static struct LevelCommand *levelCommandAddr;
 void thread5_game_loop(UNUSED void *arg) {
 
     setup_game_memory();
-#if ENABLE_RUMBLE
     init_rumble_pak_scheduler_queue();
-#endif
     init_controllers();
-#if ENABLE_RUMBLE
     create_thread_6();
-#endif
     save_file_load_all();
 
     set_vblank_handler(2, &gGameVblankHandler, &gGameVblankQueue, (OSMesg) 1);
@@ -676,9 +668,7 @@ void game_loop_one_iteration(void) {
         // If any controllers are plugged in, start read the data for when
         // read_controller_inputs is called later.
         if (gControllerBits) {
-#if ENABLE_RUMBLE
             block_until_rumble_pak_free();
-#endif
             osContStartReadData(&gSIEventMesgQueue);
         }
 

@@ -7,7 +7,6 @@
 #include "course_table.h"
 #include "dialog_ids.h"
 #include "engine/math_util.h"
-#include "eu_translation.h"
 #include "game_init.h"
 #include "gfx_dimensions.h"
 #include "ingame_menu.h"

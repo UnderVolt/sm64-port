@@ -76,9 +76,7 @@ void controllable_platform_hit_wall(s8 sp1B) {
     D_80331694 = 5;
 
     cur_obj_play_sound_2(SOUND_GENERAL_QUIET_POUND1);
-#if ENABLE_RUMBLE
     queue_rumble_data(50, 80);
-#endif
 }
 
 void controllable_platform_check_walls(s8 sp1B, s8 sp1C[3], Vec3f sp20, UNUSED Vec3f sp24, Vec3f sp28) {

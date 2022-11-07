@@ -26,19 +26,15 @@ extern OSThread gIdleThread;
 extern OSThread gMainThread;
 extern OSThread gGameLoopThread;
 extern OSThread gSoundThread;
-#if ENABLE_RUMBLE
 extern OSThread gRumblePakThread;
 
 extern s32 gRumblePakPfs; // Actually an OSPfs but we don't have that header yet
-#endif
 
 extern OSMesgQueue gPIMesgQueue;
 extern OSMesgQueue gIntrMesgQueue;
 extern OSMesgQueue gSPTaskMesgQueue;
-#if ENABLE_RUMBLE
 extern OSMesgQueue gRumblePakSchedulerMesgQueue;
 extern OSMesgQueue gRumbleThreadVIMesgQueue;
-#endif
 extern OSMesg gDmaMesgBuf[1];
 extern OSMesg gPIMesgBuf[32];
 extern OSMesg gSIEventMesgBuf[1];
@@ -48,13 +44,11 @@ extern OSIoMesg gDmaIoMesg;
 extern OSMesg gMainReceivedMesg;
 extern OSMesgQueue gDmaMesgQueue;
 extern OSMesgQueue gSIEventMesgQueue;
-#if ENABLE_RUMBLE
 extern OSMesg gRumblePakSchedulerMesgBuf[1];
 extern OSMesg gRumbleThreadVIMesgBuf[1];
 
 extern struct RumbleData gRumbleDataQueue[3];
 extern struct StructSH8031D9B0 gCurrRumbleSettings;
-#endif
 
 extern struct VblankHandler *gVblankHandler1;
 extern struct VblankHandler *gVblankHandler2;

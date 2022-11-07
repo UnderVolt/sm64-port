@@ -95,7 +95,7 @@ SECTIONS
       BUILD_DIR/src/game/main.o(.text);
       BUILD_DIR/src/game/game_init.o(.text);
       BUILD_DIR/src/game/sound_init.o(.text);
-#if ENABLE_RUMBLE
+#ifdef ENABLE_RUMBLE
       BUILD_DIR/src/game/rumble_init.o(.text);
 #endif
       BUILD_DIR/src/game/level_update.o(.text);
@@ -200,7 +200,7 @@ SECTIONS
       BUILD_DIR/libultra.a:osContStartReadData.o(.text);
       BUILD_DIR/libultra.a:osContInit.o(.text);
       BUILD_DIR/libultra.a:osEepromProbe.o(.text);
-#if ENABLE_RUMBLE
+#ifdef ENABLE_RUMBLE
       BUILD_DIR/libultra.a:motor.o(.text);
 #endif
       BUILD_DIR/libultra.a:osInvalDCache.o(.text);
@@ -275,7 +275,7 @@ SECTIONS
       BUILD_DIR/libultra.a:__osSiRawStartDma.o(.text);
       BUILD_DIR/libultra.a:osSetTimer.o(.text);
       BUILD_DIR/libultra.a:osEepromWrite.o(.text);
-#if ENABLE_RUMBLE
+#ifdef ENABLE_RUMBLE
       BUILD_DIR/libultra.a:osPfsIsPlug.o(.text);
       BUILD_DIR/libultra.a:crc.o(.text);
       BUILD_DIR/libultra.a:contramwrite.o(.text);
@@ -307,7 +307,7 @@ SECTIONS
       BUILD_DIR/libultra.a:__osSetGlobalIntMask.o(.text);
 #endif
       BUILD_DIR/libultra.a:func_802F71F0.o(.text);
-#if ENABLE_RUMBLE
+#ifdef ENABLE_RUMBLE
       BUILD_DIR/libultra.a:unk_shindou_file_3.o(.text);
 #endif
       BUILD_DIR/lib/rsp.o(.text);
@@ -342,7 +342,7 @@ SECTIONS
       BUILD_DIR/libultra.a:osContStartReadData.o(.text);
       BUILD_DIR/libultra.a:osContInit.o(.text);
       BUILD_DIR/libultra.a:osEepromProbe.o(.text);
-#if ENABLE_RUMBLE
+#ifdef ENABLE_RUMBLE
       BUILD_DIR/libultra.a:motor.o(.text);
 #endif
       BUILD_DIR/libultra.a:llmuldiv.o(.text);
@@ -403,7 +403,7 @@ SECTIONS
       BUILD_DIR/libultra.a:__osSiRawStartDma.o(.text);
       BUILD_DIR/libultra.a:osSetTimer.o(.text);
       BUILD_DIR/libultra.a:osEepromWrite.o(.text);
-#if ENABLE_RUMBLE
+#ifdef ENABLE_RUMBLE
       BUILD_DIR/libultra.a:osPfsIsPlug.o(.text);
       BUILD_DIR/libultra.a:crc.o(.text);
       BUILD_DIR/libultra.a:contramwrite.o(.text);
@@ -429,7 +429,7 @@ SECTIONS
       BUILD_DIR/libultra.a:__osGetCause.o(.text);
       BUILD_DIR/libultra.a:__osAtomicDec.o(.text);
       BUILD_DIR/libultra.a:guLookAtRef.o(.text); /* Fast3DEX2 only */
-#if ENABLE_RUMBLE
+#ifdef ENABLE_RUMBLE
       BUILD_DIR/libultra.a:unk_shindou_file_3.o(.text);
 #endif
       BUILD_DIR/lib/rsp.o(.text);
@@ -440,7 +440,7 @@ SECTIONS
       BUILD_DIR/src/game/main.o(.data*);
       BUILD_DIR/src/game/game_init.o(.data*);
       BUILD_DIR/src/game/sound_init.o(.data*);
-#if ENABLE_RUMBLE
+#ifdef ENABLE_RUMBLE
       BUILD_DIR/src/game/rumble_init.o(.data*);
 #endif
       BUILD_DIR/src/game/level_update.o(.data*);
@@ -513,7 +513,7 @@ SECTIONS
       BUILD_DIR/libultra.a:osViTable.o(.data*);
       BUILD_DIR/libultra.a:osCreatePiManager.o(.data*);
       BUILD_DIR/libultra.a:osContInit.o(.data*);
-#if ENABLE_RUMBLE
+#ifdef ENABLE_RUMBLE
       BUILD_DIR/libultra.a:motor.o(.data*);
 #endif
       BUILD_DIR/libultra.a:osAiSetNextBuffer.o(.data*);
@@ -531,7 +531,7 @@ SECTIONS
       BUILD_DIR/libultra.a:osCreatePiManager.o(.data*);
       BUILD_DIR/libultra.a:osInitialize.o(.data*);
       BUILD_DIR/libultra.a:osContInit.o(.data*);
-#if ENABLE_RUMBLE
+#ifdef ENABLE_RUMBLE
       BUILD_DIR/libultra.a:motor.o(.data*);
 #endif
       BUILD_DIR/libultra.a:osAiSetNextBuffer.o(.data*);
@@ -660,7 +660,7 @@ SECTIONS
       BUILD_DIR/src/game/main.o(.bss*);
       BUILD_DIR/src/game/game_init.o(.bss*);
       BUILD_DIR/src/game/sound_init.o(.bss*);
-#if ENABLE_RUMBLE
+#ifdef ENABLE_RUMBLE
       BUILD_DIR/src/game/rumble_init.o(.bss*);
 #endif
       BUILD_DIR/src/game/level_update.o(.bss*);
@@ -718,7 +718,7 @@ SECTIONS
       BUILD_DIR/libultra.a:osCreatePiManager.o(.bss*);
       BUILD_DIR/libultra.a:osContStartReadData.o(.bss*);
       BUILD_DIR/libultra.a:osContInit.o(.bss*);
-#if ENABLE_RUMBLE
+#ifdef ENABLE_RUMBLE
       BUILD_DIR/libultra.a:motor.o(.bss*);
 #endif
       BUILD_DIR/libultra.a:guRotateF.o(.bss*);
@@ -734,7 +734,7 @@ SECTIONS
 #endif
       BUILD_DIR/libultra.a:__osPiCreateAccessQueue.o(.bss*);
       BUILD_DIR/libultra.a:__osSiCreateAccessQueue.o(.bss*);
-#if ENABLE_RUMBLE
+#ifdef ENABLE_RUMBLE
       BUILD_DIR/libultra.a:osPfsIsPlug.o(.bss*);
 #endif
       BUILD_DIR/libultra.a:osEepromWrite.o(.bss*);
@@ -756,7 +756,7 @@ SECTIONS
       BUILD_DIR/libultra.a:osInitialize.o(.bss*);
       BUILD_DIR/libultra.a:osContStartReadData.o(.bss*);
       BUILD_DIR/libultra.a:osContInit.o(.bss*);
-#if ENABLE_RUMBLE
+#ifdef ENABLE_RUMBLE
       BUILD_DIR/libultra.a:motor.o(.bss*);
 #endif
       BUILD_DIR/libultra.a:guRotateF.o(.bss*);
@@ -764,7 +764,7 @@ SECTIONS
       BUILD_DIR/libultra.a:_Printf.o(.bss*);
       BUILD_DIR/libultra.a:__osPiCreateAccessQueue.o(.bss*);
       BUILD_DIR/libultra.a:__osSiCreateAccessQueue.o(.bss*);
-#if ENABLE_RUMBLE
+#ifdef ENABLE_RUMBLE
       BUILD_DIR/libultra.a:osPfsIsPlug.o(.bss*);
 #endif
       BUILD_DIR/libultra.a:osEepromWrite.o(.bss*);
