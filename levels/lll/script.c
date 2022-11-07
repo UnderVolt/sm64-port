@@ -13,7 +13,6 @@
 
 #include "actors/common1.h"
 
-#include "make_const_nonconst.h"
 #include "levels/lll/header.h"
 
 // Unlike most levels, level geometry objects in LLL are defined as regular objects instead of terrain objects.

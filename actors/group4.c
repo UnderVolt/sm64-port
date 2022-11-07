@@ -5,7 +5,6 @@
 #include "macros.h"
 #include "surface_terrains.h"
 #include "types.h"
-#include "make_const_nonconst.h"
 
 #include "clam_shell/model.inc.c"
 #include "clam_shell/anims/data.inc.c"

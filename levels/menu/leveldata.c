@@ -5,7 +5,6 @@
 #include "surface_terrains.h"
 #include "types.h"
 
-#include "make_const_nonconst.h"
 
 // 0x07000000 - 0x07000018
 static const Lights1 lights_menu_save_button = gdSPDefLights1(

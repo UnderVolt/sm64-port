@@ -1,7 +1,6 @@
 #include <ultra64.h>
 #include "sm64.h"
 
-#include "make_const_nonconst.h"
 
 // 0x07000000 - 0x07000018
 static const Lights1 debug_level_select_lights_07000000 = gdSPDefLights1(

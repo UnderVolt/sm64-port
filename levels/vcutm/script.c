@@ -13,7 +13,6 @@
 
 #include "actors/common1.h"
 
-#include "make_const_nonconst.h"
 #include "levels/vcutm/header.h"
 
 static const LevelScript script_func_local_1[] = {

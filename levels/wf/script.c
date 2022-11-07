@@ -13,7 +13,6 @@
 
 #include "actors/common1.h"
 
-#include "make_const_nonconst.h"
 #include "levels/wf/header.h"
 
 // Unlike most levels, some of the level geometry objects in WF are defined as regular objects instead of terrain objects.

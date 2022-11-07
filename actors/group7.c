@@ -4,7 +4,6 @@
 #include "macros.h"
 #include "surface_terrains.h"
 #include "types.h"
-#include "make_const_nonconst.h"
 
 #include "spindrift/model.inc.c"
 #include "spindrift/anims/data.inc.c"

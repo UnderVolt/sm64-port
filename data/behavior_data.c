@@ -53,7 +53,6 @@
 #include "levels/bowser_2/header.h"
 #include "levels/ttm/header.h"
 
-#include "make_const_nonconst.h"
 #include "behavior_data.h"
 
 #define BC_B(a) _SHIFTL(a, 24, 8)

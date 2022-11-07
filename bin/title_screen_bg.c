@@ -1,7 +1,6 @@
 #include <ultra64.h>
 #include "sm64.h"
 
-#include "make_const_nonconst.h"
 
 // 0x0A000000 - 0x0A000100
 static const Vtx title_screen_bg_vertex_0A000000[] = {

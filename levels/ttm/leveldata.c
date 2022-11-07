@@ -8,7 +8,6 @@
 #include "textures.h"
 #include "dialog_ids.h"
 
-#include "make_const_nonconst.h"
 #include "levels/ttm/texture.inc.c"
 #include "levels/ttm/areas/1/1/model.inc.c"
 #include "levels/ttm/areas/1/2/model.inc.c"

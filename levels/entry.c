@@ -5,7 +5,6 @@
 
 #include "levels/intro/header.h"
 
-#include "make_const_nonconst.h"
 
 const LevelScript level_script_entry[] = {
     INIT_LEVEL(),

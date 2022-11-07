@@ -12,7 +12,6 @@
 
 #include "actors/common1.h"
 
-#include "make_const_nonconst.h"
 #include "levels/pss/header.h"
 
 const LevelScript level_pss_entry[] = {

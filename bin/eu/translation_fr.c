@@ -4,7 +4,6 @@
 
 #include "game/ingame_menu.h"
 
-#include "make_const_nonconst.h"
 
 // Include text/define_text.inc.c, preprocessed with -I text/fr/ to get the
 // right translation strings, with symbols renamed as below.

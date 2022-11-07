@@ -13,7 +13,6 @@
 
 #include "actors/common1.h"
 
-#include "make_const_nonconst.h"
 #include "levels/ending/header.h"
 
 const LevelScript level_ending_entry[] = {

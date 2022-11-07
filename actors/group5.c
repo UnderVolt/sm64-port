@@ -6,7 +6,6 @@
 #include "surface_terrains.h"
 #include "sm64.h"
 #include "types.h"
-#include "make_const_nonconst.h"
 
 #include "klepto/model.inc.c"
 #include "klepto/anims/data.inc.c"

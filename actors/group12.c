@@ -4,7 +4,6 @@
 #include "macros.h"
 #include "surface_terrains.h"
 #include "types.h"
-#include "make_const_nonconst.h"
 
 #include "bowser_flame/model.inc.c"
 

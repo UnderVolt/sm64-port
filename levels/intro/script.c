@@ -15,7 +15,6 @@
 
 #include "actors/common1.h"
 
-#include "make_const_nonconst.h"
 #include "levels/intro/header.h"
 
 const LevelScript level_intro_splash_screen[] = {

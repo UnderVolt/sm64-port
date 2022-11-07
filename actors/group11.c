@@ -6,7 +6,6 @@
 #include "sm64.h"
 #include "surface_terrains.h"
 #include "types.h"
-#include "make_const_nonconst.h"
 
 #include "bubba/model.inc.c"
 

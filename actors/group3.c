@@ -4,7 +4,6 @@
 #include "macros.h"
 #include "surface_terrains.h"
 #include "types.h"
-#include "make_const_nonconst.h"
 
 #include "king_bobomb/model.inc.c"
 #include "king_bobomb/anims/data.inc.c"

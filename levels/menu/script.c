@@ -15,7 +15,6 @@
 
 #include "actors/common1.h"
 
-#include "make_const_nonconst.h"
 #include "levels/menu/header.h"
 
 const LevelScript level_main_menu_entry_1[] = {

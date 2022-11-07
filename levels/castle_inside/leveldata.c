@@ -8,7 +8,6 @@
 #include "textures.h"
 #include "dialog_ids.h"
 
-#include "make_const_nonconst.h"
 #include "levels/castle_inside/texture.inc.c"
 #include "levels/castle_inside/painting.inc.c"
 #include "levels/castle_inside/areas/1/1/model.inc.c"

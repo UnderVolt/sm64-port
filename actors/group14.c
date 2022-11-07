@@ -4,7 +4,6 @@
 #include "macros.h"
 #include "surface_terrains.h"
 #include "types.h"
-#include "make_const_nonconst.h"
 
 #include "koopa_flag/model.inc.c"
 #include "koopa_flag/anims/data.inc.c"

@@ -6,7 +6,6 @@
 #include "types.h"
 #include "game/ingame_menu.h"
 
-#include "make_const_nonconst.h"
 
 // SM64 (US/JP/EU/SH) Segment 02
 

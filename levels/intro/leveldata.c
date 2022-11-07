@@ -4,7 +4,6 @@
 #include "macros.h"
 #include "types.h"
 
-#include "make_const_nonconst.h"
 
 // 0x07000000 - 0x07000100
 static const Vtx intro_seg7_vertex_07000000[] = {

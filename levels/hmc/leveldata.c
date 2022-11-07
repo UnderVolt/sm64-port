@@ -8,7 +8,6 @@
 #include "textures.h"
 #include "dialog_ids.h"
 
-#include "make_const_nonconst.h"
 #include "levels/hmc/texture.inc.c"
 #include "levels/hmc/areas/1/1/model.inc.c"
 #include "levels/hmc/areas/1/2/model.inc.c"

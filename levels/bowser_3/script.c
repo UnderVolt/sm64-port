@@ -12,7 +12,6 @@
 
 #include "actors/common1.h"
 
-#include "make_const_nonconst.h"
 #include "levels/bowser_3/header.h"
 
 static const LevelScript script_func_local_1[] = {
