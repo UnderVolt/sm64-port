@@ -538,21 +538,10 @@ struct Object *spawn_object(struct Object *parent, s32 model, const BehaviorScri
 struct Object *try_to_spawn_object(s16 offsetY, f32 scale, struct Object *parent, s32 model,
                                    const BehaviorScript *behavior) {
     struct Object *obj;
-
-    if (
-#ifdef USE_SYSTEM_MALLOC
-        TRUE
-#else
-        gFreeObjectList.next != NULL
-#endif
-    ) {
-        obj = spawn_object(parent, model, behavior);
-        obj->oPosY += offsetY;
-        obj_scale(obj, scale);
-        return obj;
-    } else {
-        return NULL;
-    }
+    obj = spawn_object(parent, model, behavior);
+    obj->oPosY += offsetY;
+    obj_scale(obj, scale);
+    return obj;
 }
 
 struct Object *spawn_object_with_scale(struct Object *parent, s32 model, const BehaviorScript *behavior, f32 scale) {
@@ -1050,7 +1039,7 @@ void cur_obj_set_y_vel_and_animation(f32 yVel, s32 animIndex) {
 void cur_obj_unrender_set_action_and_anim(s32 animIndex, s32 action) {
     cur_obj_become_intangible();
     cur_obj_disable_rendering();
-    
+
     // only set animation if non-negative value
     if (animIndex >= 0) {
         cur_obj_init_animation_with_sound(animIndex);

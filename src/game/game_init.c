@@ -26,14 +26,9 @@ struct Controller gControllers[3];
 
 // Gfx handlers
 struct SPTask *gGfxSPTask;
-#ifdef USE_SYSTEM_MALLOC
 struct AllocOnlyPool *gGfxAllocOnlyPool;
 Gfx *gDisplayListHeadInChunk;
 Gfx *gDisplayListEndInChunk;
-#else
-Gfx *gDisplayListHead;
-u8 *gGfxPoolEnd;
-#endif
 struct GfxPool *gGfxPool;
 
 // OS Controllers
@@ -324,7 +319,6 @@ void draw_reset_bars(void) {
 }
 
 
-#ifdef USE_SYSTEM_MALLOC
 Gfx **alloc_next_dl(void) {
     u32 size = 1000;
     Gfx *new_chunk = alloc_only_pool_alloc(gGfxAllocOnlyPool, size * sizeof(Gfx));
@@ -333,7 +327,6 @@ Gfx **alloc_next_dl(void) {
     gDisplayListEndInChunk = new_chunk + size;
     return &gDisplayListHeadInChunk;
 }
-#endif
 
 /**
  * Selects the location of the F3D output buffer (gDisplayListHead).
@@ -342,14 +335,9 @@ void select_gfx_pool(void) {
     gGfxPool = &gGfxPools[gGlobalTimer % ARRAY_COUNT(gGfxPools)];
     set_segment_base_addr(1, gGfxPool->buffer);
     gGfxSPTask = &gGfxPool->spTask;
-#ifdef USE_SYSTEM_MALLOC
     gDisplayListHeadInChunk = gGfxPool->buffer;
     gDisplayListEndInChunk = gDisplayListHeadInChunk + 1;
     alloc_only_pool_clear(gGfxAllocOnlyPool);
-#else
-    gDisplayListHead = gGfxPool->buffer;
-    gGfxPoolEnd = (u8 *) (gGfxPool->buffer + GFX_POOL_SIZE);
-#endif
 }
 
 /**
@@ -681,10 +669,5 @@ void game_loop_one_iteration(void) {
 
         // when debug info is enabled, print the "BUF %d" information.
         if (gShowDebugText) {
-#ifndef USE_SYSTEM_MALLOC
-            // subtract the end of the gfx pool with the display list to obtain the
-            // amount of free space remaining.
-            print_text_fmt_int(180, 20, "BUF %d", gGfxPoolEnd - (u8 *) gDisplayListHead);
-#endif
         }
 }
